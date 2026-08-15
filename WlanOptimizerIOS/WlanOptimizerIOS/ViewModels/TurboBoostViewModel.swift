@@ -47,7 +47,7 @@ public final class TurboBoostViewModel: ObservableObject {
     private var pingTimer: Timer?
     
     public init() {
-        startLivePingSimulation()
+        startLivePingMeasurement()
     }
     
     public func toggleBoost() {
@@ -80,15 +80,29 @@ public final class TurboBoostViewModel: ObservableObject {
         }
     }
     
-    private func startLivePingSimulation() {
+    private func startLivePingMeasurement() {
         pingTimer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true) { [weak self] _ in
             guard let self = self else { return }
+            
+            // Determine the target IP based on mode and state
+            let targetHost: String
             if self.isBoostActive {
-                let jitter = Double.random(in: -1.2...1.2)
-                self.livePing = max(8.0, 13.5 + jitter)
+                switch self.selectedMode {
+                case .gaming: targetHost = "1.1.1.1" // Cloudflare
+                case .adBlock: targetHost = "94.140.14.14" // AdGuard
+                case .streaming: targetHost = "8.8.8.8" // Google
+                }
             } else {
-                let jitter = Double.random(in: -4.5...6.0)
-                self.livePing = max(20.0, 39.0 + jitter)
+                targetHost = "8.8.4.4" // Un-optimized fallback target for contrast
+            }
+            
+            Task {
+                if let latency = await PingMonitorService.shared.pingSingle(host: targetHost, port: 53) {
+                    await MainActor.run {
+                        // Apply a smoothing function or just set it
+                        self.livePing = latency
+                    }
+                }
             }
         }
     }

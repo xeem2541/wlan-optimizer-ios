@@ -62,6 +62,13 @@ public struct MainTabView: View {
                     Text("Doctor")
                 }
                 .tag(5)
+                
+            SpeedTestView()
+                .tabItem {
+                    Image(systemName: "speedometer")
+                    Text("Speed")
+                }
+                .tag(6)
         }
         .accentColor(neonCyan)
     }
