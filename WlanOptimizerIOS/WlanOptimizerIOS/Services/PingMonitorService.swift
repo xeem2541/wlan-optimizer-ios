@@ -93,24 +93,32 @@ public final class PingMonitorService: ObservableObject {
             let connection = NWConnection(host: nwHost, port: nwPort, using: params)
             let startTime = DispatchTime.now()
             
-            var didResume = false
+            class ResumeState {
+                var didResume = false
+                let lock = NSLock()
+                func complete(result: Double?, continuation: CheckedContinuation<Double?, Never>, connection: NWConnection) {
+                    lock.lock()
+                    defer { lock.unlock() }
+                    if !didResume {
+                        didResume = true
+                        connection.cancel()
+                        continuation.resume(returning: result)
+                    }
+                }
+            }
+            
+            let stateTracker = ResumeState()
             
             connection.stateUpdateHandler = { state in
                 switch state {
                 case .ready:
-                    guard !didResume else { return }
-                    didResume = true
                     let endTime = DispatchTime.now()
                     let nanoDiff = endTime.uptimeNanoseconds - startTime.uptimeNanoseconds
                     let ms = Double(nanoDiff) / 1_000_000.0
-                    connection.cancel()
-                    continuation.resume(returning: ms)
+                    stateTracker.complete(result: ms, continuation: continuation, connection: connection)
                     
                 case .failed, .cancelled:
-                    guard !didResume else { return }
-                    didResume = true
-                    connection.cancel()
-                    continuation.resume(returning: nil)
+                    stateTracker.complete(result: nil, continuation: continuation, connection: connection)
                     
                 default:
                     break
@@ -121,11 +129,7 @@ public final class PingMonitorService: ObservableObject {
             
             // Safety timeout
             DispatchQueue.global().asyncAfter(deadline: .now() + 2.0) {
-                if !didResume {
-                    didResume = true
-                    connection.cancel()
-                    continuation.resume(returning: nil)
-                }
+                stateTracker.complete(result: nil, continuation: continuation, connection: connection)
             }
         }
     }

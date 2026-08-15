@@ -35,10 +35,11 @@ public final class DNSOptimizerService: ObservableObject {
             }
             
             for await (index, latency) in group {
+                updatedProviders[index].currentLatencyMs = latency
                 completedCount += 1
+                let progress = completedCount / totalCount
                 await MainActor.run {
-                    updatedProviders[index].currentLatencyMs = latency
-                    self.benchmarkProgress = completedCount / totalCount
+                    self.benchmarkProgress = progress
                 }
             }
         }
