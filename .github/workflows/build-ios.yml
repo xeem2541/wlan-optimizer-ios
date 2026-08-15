@@ -15,30 +15,29 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Select Xcode Version
-      run: sudo xcode-select -s /Applications/Xcode_15.4.app/Contents/Developer
+    - name: Show Xcode Version
+      run: xcodebuild -version
 
     - name: Build Archive (Unsigned)
       run: |
-        cd WlanOptimizerIOS
         xcodebuild archive \
-          -project WlanOptimizerIOS.xcodeproj \
+          -project WlanOptimizerIOS/WlanOptimizerIOS.xcodeproj \
           -scheme WlanOptimizerIOS \
           -configuration Release \
-          -archivePath build/WlanOptimizerIOS.xcarchive \
+          -destination 'generic/platform=iOS' \
+          -archivePath WlanOptimizerIOS/build/WlanOptimizerIOS.xcarchive \
           CODE_SIGNING_ALLOWED=NO \
           CODE_SIGNING_REQUIRED=NO \
           CODE_SIGN_IDENTITY=""
 
     - name: Package IPA
       run: |
-        cd WlanOptimizerIOS
         mkdir -p Payload
-        cp -r build/WlanOptimizerIOS.xcarchive/Products/Applications/WlanOptimizerIOS.app Payload/
+        cp -r WlanOptimizerIOS/build/WlanOptimizerIOS.xcarchive/Products/Applications/WlanOptimizerIOS.app Payload/
         zip -r WlanOptimizerIOS.ipa Payload
 
     - name: Upload IPA Artifact
       uses: actions/upload-artifact@v4
       with:
         name: WlanOptimizerIOS-IPA
-        path: WlanOptimizerIOS/WlanOptimizerIOS.ipa
+        path: WlanOptimizerIOS.ipa
