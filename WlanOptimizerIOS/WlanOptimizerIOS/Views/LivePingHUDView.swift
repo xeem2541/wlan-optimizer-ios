@@ -1,5 +1,6 @@
 import SwiftUI
 import Charts
+import UIKit
 
 public struct LivePingHUDView: View {
     @StateObject private var viewModel = PingHUDViewModel()

@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 public struct BufferbloatView: View {
     @StateObject private var viewModel = BufferbloatViewModel()

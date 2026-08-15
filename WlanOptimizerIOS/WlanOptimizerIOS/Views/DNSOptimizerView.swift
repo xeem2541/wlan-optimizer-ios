@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 public struct DNSOptimizerView: View {
     @StateObject private var viewModel = DNSBenchmarkViewModel()

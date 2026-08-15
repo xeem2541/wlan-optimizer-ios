@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 public struct MainTabView: View {
     @State private var selectedTab: Int = 0

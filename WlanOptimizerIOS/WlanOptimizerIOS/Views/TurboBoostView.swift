@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 public struct TurboBoostView: View {
     @StateObject private var viewModel = TurboBoostViewModel()
