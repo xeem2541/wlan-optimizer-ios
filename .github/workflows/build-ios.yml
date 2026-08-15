@@ -30,7 +30,14 @@ jobs:
           CODE_SIGN_ENTITLEMENTS="" \
           PROVISIONING_PROFILE_SPECIFIER="" \
           ENTITLEMENTS_REQUIRED="NO" \
-          CONFIGURATION_BUILD_DIR=$(pwd)/build
+          CONFIGURATION_BUILD_DIR=$(pwd)/build > build_log.txt 2>&1 || (cat build_log.txt && exit 1)
+
+    - name: Upload Build Log on Failure
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: Build-Log
+        path: WlanOptimizerIOS/build_log.txt
 
     - name: Package IPA
       run: |
