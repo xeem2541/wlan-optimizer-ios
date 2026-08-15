@@ -15,9 +15,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Show Xcode Version
-      run: xcodebuild -version
-
     - name: Build App (Unsigned)
       run: |
         cd WlanOptimizerIOS
@@ -25,11 +22,14 @@ jobs:
           -project WlanOptimizerIOS.xcodeproj \
           -scheme WlanOptimizerIOS \
           -configuration Release \
-          -destination 'generic/platform=iOS' \
-          CODE_SIGNING_ALLOWED=NO \
-          CODE_SIGNING_REQUIRED=NO \
+          -arch arm64 -sdk iphoneos \
+          CODE_SIGN_STYLE="Manual" \
+          CODE_SIGNING_ALLOWED="NO" \
+          CODE_SIGNING_REQUIRED="NO" \
           CODE_SIGN_IDENTITY="" \
-          ENTITLEMENTS_REQUIRED=NO \
+          CODE_SIGN_ENTITLEMENTS="" \
+          PROVISIONING_PROFILE_SPECIFIER="" \
+          ENTITLEMENTS_REQUIRED="NO" \
           CONFIGURATION_BUILD_DIR=$(pwd)/build
 
     - name: Package IPA
