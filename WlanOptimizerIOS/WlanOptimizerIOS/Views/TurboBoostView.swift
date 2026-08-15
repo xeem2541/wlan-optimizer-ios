@@ -35,7 +35,7 @@ public struct TurboBoostView: View {
                                     .foregroundColor(neonCyan)
                                     .tracking(2)
                                 
-                                Text("iOS Turbo Engine")
+                                Text("iOS Turbo Engine ⚡️")
                                     .font(.system(size: 24, weight: .bold))
                                     .foregroundColor(.white)
                             }
