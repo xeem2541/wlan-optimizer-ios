@@ -57,3 +57,13 @@ jobs:
       with:
         name: WlanOptimizerIOS-IPA
         path: WlanOptimizerIOS/WlanOptimizerIOS.ipa
+
+    - name: Push IPA to build-output branch
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+        git fetch origin
+        git checkout -b build-output || git checkout build-output
+        git add WlanOptimizerIOS/WlanOptimizerIOS.ipa -f
+        git commit -m "Automated build output [skip ci]"
+        git push -f origin build-output
