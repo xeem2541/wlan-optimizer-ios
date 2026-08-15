@@ -1,6 +1,1 @@
-/Users/runner/work/wlan-optimizer-ios/wlan-optimizer-ios/WlanOptimizerIOS/WlanOptimizerIOS/Services/DNSOptimizerService.swift:40:21: error: mutation of captured var 'updatedProviders' in concurrently-executing code
-/Users/runner/work/wlan-optimizer-ios/wlan-optimizer-ios/WlanOptimizerIOS/WlanOptimizerIOS/Services/DNSOptimizerService.swift:41:46: error: reference to captured var 'completedCount' in concurrently-executing code
-/Users/runner/work/wlan-optimizer-ios/wlan-optimizer-ios/WlanOptimizerIOS/WlanOptimizerIOS/Services/PingMonitorService.swift:101:28: error: reference to captured var 'didResume' in concurrently-executing code
-/Users/runner/work/wlan-optimizer-ios/wlan-optimizer-ios/WlanOptimizerIOS/WlanOptimizerIOS/Services/PingMonitorService.swift:102:21: error: mutation of captured var 'didResume' in concurrently-executing code
-/Users/runner/work/wlan-optimizer-ios/wlan-optimizer-ios/WlanOptimizerIOS/WlanOptimizerIOS/Services/PingMonitorService.swift:110:28: error: reference to captured var 'didResume' in concurrently-executing code
-/Users/runner/work/wlan-optimizer-ios/wlan-optimizer-ios/WlanOptimizerIOS/WlanOptimizerIOS/Services/PingMonitorService.swift:111:21: error: mutation of captured var 'didResume' in concurrently-executing code
+/Users/runner/work/wlan-optimizer-ios/wlan-optimizer-ios/WlanOptimizerIOS/WlanOptimizerIOS/Views/MainTabView.swift:66:13: error: cannot find 'SpeedTestView' in scope
