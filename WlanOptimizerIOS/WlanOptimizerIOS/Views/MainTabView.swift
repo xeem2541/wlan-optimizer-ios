@@ -1,5 +1,6 @@
 import SwiftUI
 import UIKit
+import Combine
 
 public struct MainTabView: View {
     @State private var selectedTab: Int = 0
