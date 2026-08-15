@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>DNSSettings</key>
+            <dict>
+                <key>DNSProtocol</key>
+                <string>HTTPS</string>
+                <key>ServerURL</key>
+                <string>https://cloudflare-dns.com/dns-query</string>
+                <key>ServerAddresses</key>
+                <array>
+                    <string>1.1.1.1</string>
+                    <string>1.0.0.1</string>
+                    <string>2606:4700:4700::1111</string>
+                    <string>2606:4700:4700::1001</string>
+                </array>
+            </dict>
+            <key>PayloadDescription</key>
+            <string>Configures Encrypted DNS (DNS over HTTPS) using Cloudflare 1.1.1.1 for ultra-low latency gaming and fast routing.</string>
+            <key>PayloadDisplayName</key>
+            <string>Cloudflare 1.1.1.1 Gaming DNS</string>
+            <key>PayloadIdentifier</key>
+            <string>com.wlanoptimizer.dns.cloudflare</string>
+            <key>PayloadType</key>
+            <string>com.apple.dnsSettings.managed</string>
+            <key>PayloadUUID</key>
+            <string>E5868B4C-2342-4752-9A47-1B8405FA57F1</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+        </dict>
+    </array>
+    <key>PayloadDisplayName</key>
+    <string>WLAN Optimizer - Cloudflare 1.1.1.1 Gaming Ultra</string>
+    <key>PayloadIdentifier</key>
+    <string>com.wlanoptimizer.profile.cloudflare</string>
+    <key>PayloadRemovalDisallowed</key>
+    <false/>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>9C36FE86-BC02-4D90-A8F8-9F0A5BF8B8A2</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>

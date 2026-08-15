@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>DNSSettings</key>
+            <dict>
+                <key>DNSProtocol</key>
+                <string>HTTPS</string>
+                <key>ServerURL</key>
+                <string>https://dns.adguard-dns.com/dns-query</string>
+                <key>ServerAddresses</key>
+                <array>
+                    <string>94.140.14.14</string>
+                    <string>94.140.15.15</string>
+                    <string>2a10:50c0::ad1:ff</string>
+                    <string>2a10:50c0::ad2:ff</string>
+                </array>
+            </dict>
+            <key>PayloadDescription</key>
+            <string>Blocks popups, tracking trackers, and malicious ads system-wide on iOS.</string>
+            <key>PayloadDisplayName</key>
+            <string>AdGuard DNS Protection</string>
+            <key>PayloadIdentifier</key>
+            <string>com.wlanoptimizer.dns.adguard</string>
+            <key>PayloadType</key>
+            <string>com.apple.dnsSettings.managed</string>
+            <key>PayloadUUID</key>
+            <string>F2930211-1823-4A12-B910-85A20C631102</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+        </dict>
+    </array>
+    <key>PayloadDisplayName</key>
+    <string>WLAN Optimizer - AdGuard Fast AdBlock</string>
+    <key>PayloadIdentifier</key>
+    <string>com.wlanoptimizer.profile.adguard</string>
+    <key>PayloadRemovalDisallowed</key>
+    <false/>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>27389812-4011-4771-8899-73AB819033AA</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>
